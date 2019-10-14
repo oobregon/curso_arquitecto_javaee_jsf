@@ -13,46 +13,21 @@ public class RegistroBean {
 	@EJB
 	DaoClientes cliEjb;
 	
-	private String usuario;
-	private String contra;
-	private String email;
-	private String tfno;
+	Cliente cliente;
 	
-	public DaoClientes getCliEjb() {
-		return cliEjb;
-	}
-	public void setCliEjb(DaoClientes cliEjb) {
-		this.cliEjb = cliEjb;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getTfno() {
-		return tfno;
-	}
-	public void setTfno(String tfno) {
-		this.tfno = tfno;
-	}
 	
-	public String getUsuario() {
-		return usuario;
+	public Cliente getCliente() {
+		return cliente;
 	}
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-	public String getContra() {
-		return contra;
-	}
-	public void setContra(String contra) {
-		this.contra = contra;
-	}
-	
+
 	public String confirmar() {
-		Cliente cliente = new Cliente(0,getEmail(),getContra(),Integer.parseInt(getTfno()),getUsuario());		
-		cliEjb.registrar(cliente);
+		Cliente cli = new Cliente(0,cliente.getEmail(),cliente.getPassword(),
+										cliente.getTelefono(),cliente.getUsuario());				
+		cliEjb.registrar(cli);
 		return "login";
 	}	
 	

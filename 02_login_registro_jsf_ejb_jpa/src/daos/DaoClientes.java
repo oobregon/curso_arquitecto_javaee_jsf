@@ -14,4 +14,6 @@ public interface DaoClientes {
 	Cliente obtenerClientePorId(int idCliente);
 
 	void registrar(Cliente c);
+	
+	void actualizar(Cliente c);
 }

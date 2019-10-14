@@ -45,4 +45,9 @@ public class DaoClientesImpl implements DaoClientes {
 		q.setParameter(2,pass);
 		return q.getResultList().size() > 0;
 	}
+
+	@Override
+	public void actualizar(Cliente c) {
+		em.merge(c);		
+	}
 }

@@ -8,10 +8,10 @@
 <h:body> 
 	<center>
 		<h:form>
-			Introduce usuario: <h:inputText value="#{registroBean.usuario}" /> <br/><br/>
-			Introduce contraseña: <h:inputSecret value="#{registroBean.contra}" /> <br/><br/>
-			Introduce email: <h:inputText value="#{registroBean.email}" /> <br/><br/>
-			Introduce telefono: <h:inputText value="#{registroBean.tfno}" /> <br/><br/>						
+			Introduce usuario: <h:inputText value="#{registroBean.cliente.usuario}" /> <br/><br/>
+			Introduce contraseña: <h:inputSecret value="#{registroBean.cliente.password}" /> <br/><br/>
+			Introduce email: <h:inputText value="#{registroBean.cliente.}" /> <br/><br/>
+			Introduce telefono: <h:inputText value="#{registroBean.cliente.telefono}" /> <br/><br/>						
 			<h:commandButton action="#{registroBean.confirmar()}" value="Registrar" /><br/><br/>			
 		</h:form>
 	</center>
