@@ -23,7 +23,7 @@ public class RegistroBean {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	hey
+
 	public String confirmar() {
 		Cliente cli = new Cliente(0,cliente.getEmail(),cliente.getPassword(),cliente.getTelefono(),cliente.getUsuario());				
 		cliEjb.registrar(cli);
