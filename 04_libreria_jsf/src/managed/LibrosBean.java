@@ -1,0 +1,63 @@
+package managed;
+
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+
+import daos.DaoLibros;
+import model.Libro;
+
+// No sería necesario añada la anotación (name = "librosBean"), ya que, por defecto se crearía con ese nombre, 
+// es decir, el nombre de la clase pero empezando por minúscula
+@ManagedBean(name = "librosBean")
+@RequestScoped
+public class LibrosBean {
+	private List<Libro> libros;
+	
+	// Por propia definición, la inyección de dependencia es que inyectamos un objeto (EJB) en otro (LibrosBean), pero claro,
+	// LibrosBean ya tiene que estar creado; sino está creado el LibrosBean, entonces ¿Dónde inyectas el EJB?
+	// Durante la creación de LibrosBean no se puede hacer inyección de dependencias porque todavía no existe el objeto que va a recibir la inyección.
+	// Por regla general, la mejor solución a este problema es la anotación @PostConstruct 
+	@EJB
+	DaoLibros libEjb;
+	
+	// Podemos inyectar el loginBean porque su ámbito es de sesión, si su ámbito fuera de petición, en este punto no podríamos 
+	// inyectar dicho managedBean porque ya no existiría
+	@ManagedProperty("#{loginBean}")
+	LoginBean loginBean;
+	
+	@ManagedProperty("#{temasBean}")
+	TemasBean temasBean;	
+	
+	public LibrosBean() {
+		// No se puede hacer inyección de dependencias en un constructor 
+		// libros = libEjb.obtenerLibros();
+	}
+	
+	// Esta anotación nos garantiza que el método que la sigue se va a ejecutar solamente cuando la instancia (this) esté creada.
+	@PostConstruct
+	private void cargaLibros() {
+		int idTema = temasBean.getIdTema();
+		libros = idTema==0?libEjb.obtenerLibros():libEjb.obtenerLibrosPorTema(temasBean.getIdTema());		
+	}
+
+	public List<Libro> getLibros() {
+		return libros;
+	}
+
+	public void setLibros(List<Libro> libros) {
+		this.libros = libros;
+	}
+	
+	public LoginBean getLoginBean() {
+		return loginBean;
+	}
+
+	public void setLoginBean(LoginBean loginBean) {
+		this.loginBean = loginBean;
+	}
+}

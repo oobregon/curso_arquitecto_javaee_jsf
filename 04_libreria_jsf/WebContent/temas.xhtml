@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+	<h:selectOneRadio layout="pageDirection" >
+        <f:selectItem itemValue="0" itemLabel="TODOS"/>
+        <f:selectItems var="t" value="#{temasBean.temas}"
+			itemLabel="#{t.tema}" 
+			itemValue="#{t.idTema}" />
+	</h:selectOneRadio><br/><br/>
+	<h:link outcome="libros" value="Ver libros"/><br/>
+</h:body> 
+</html>
