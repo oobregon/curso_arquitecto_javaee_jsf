@@ -13,16 +13,8 @@ import model.Tema;
 @ManagedBean(name = "temasBean")
 @RequestScoped
 public class TemasBean {
-	int idTema;
-	List<Tema> temas;
-	
-	public List<Tema> getTemas() {
-		return temas;
-	}
-
-	public void setTemas(List<Tema> temas) {
-		this.temas = temas;
-	}
+	private int idTema;
+	private List<Tema> temas;
 
 	@EJB
 	DaoTemas temasEjb;	
@@ -38,6 +30,14 @@ public class TemasBean {
 
 	public void setIdTema(int idTema) {
 		this.idTema = idTema;
+	}
+	
+	public List<Tema> getTemas() {
+		return temas;
+	}
+
+	public void setTemas(List<Tema> temas) {
+		this.temas = temas;
 	}
 	
 	public String mostrarLibros() {

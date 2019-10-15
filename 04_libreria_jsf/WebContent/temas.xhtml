@@ -4,14 +4,19 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head></h:head> 
+<h:head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</h:head> 
 <h:body> 
-	<h:selectOneRadio layout="pageDirection" >
+<h:form>
+	Usuario logado<b><h:outputLabel value="#{loginBean.usuario}" /></b><br/><br/>
+	<h:selectOneMenu value="#{temasBean.idTema}" layout="pageDirection">
         <f:selectItem itemValue="0" itemLabel="TODOS"/>
         <f:selectItems var="t" value="#{temasBean.temas}"
 			itemLabel="#{t.tema}" 
 			itemValue="#{t.idTema}" />
-	</h:selectOneRadio><br/><br/>
-	<h:link outcome="libros" value="Ver libros"/><br/>
+	</h:selectOneMenu><br/><br/>	
+	<h:commandButton action="#{temasBean.mostrarLibros()}" value="Ver libros" /><br/><br/>
+</h:form>	
 </h:body> 
 </html>

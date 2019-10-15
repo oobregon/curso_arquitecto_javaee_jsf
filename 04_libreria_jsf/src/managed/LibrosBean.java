@@ -27,22 +27,19 @@ public class LibrosBean {
 	
 	// Podemos inyectar el loginBean porque su ámbito es de sesión, si su ámbito fuera de petición, en este punto no podríamos 
 	// inyectar dicho managedBean porque ya no existiría
-	@ManagedProperty("#{loginBean}")
-	LoginBean loginBean;
 	
 	@ManagedProperty("#{temasBean}")
 	TemasBean temasBean;	
 	
-	public LibrosBean() {
-		// No se puede hacer inyección de dependencias en un constructor 
-		// libros = libEjb.obtenerLibros();
-	}
-	
+	public LibrosBean() {}
+
+	// No se puede hacer inyección de dependencias en un constructor 
+	// libros = libEjb.obtenerLibros();
 	// Esta anotación nos garantiza que el método que la sigue se va a ejecutar solamente cuando la instancia (this) esté creada.
 	@PostConstruct
-	private void cargaLibros() {
+	private void cargaLibros() {		
 		int idTema = temasBean.getIdTema();
-		libros = idTema==0?libEjb.obtenerLibros():libEjb.obtenerLibrosPorTema(temasBean.getIdTema());		
+		libros = idTema==0?libEjb.obtenerLibros():libEjb.obtenerLibrosPorTema(idTema);		
 	}
 
 	public List<Libro> getLibros() {
@@ -52,12 +49,12 @@ public class LibrosBean {
 	public void setLibros(List<Libro> libros) {
 		this.libros = libros;
 	}
-	
-	public LoginBean getLoginBean() {
-		return loginBean;
+
+	public TemasBean getTemasBean() {
+		return temasBean;
 	}
 
-	public void setLoginBean(LoginBean loginBean) {
-		this.loginBean = loginBean;
+	public void setTemasBean(TemasBean temasBean) {
+		this.temasBean = temasBean;
 	}
 }

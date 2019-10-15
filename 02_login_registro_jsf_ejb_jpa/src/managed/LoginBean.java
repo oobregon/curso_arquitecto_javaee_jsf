@@ -44,7 +44,7 @@ public class LoginBean {
 	
 	// Aquí introducimos lo que haríamos en el service de nuestros antiguos servlets.
 	// ¿qué es lo que devolvía nuestro frontcontroler? Un nombre de vista.
-	// Pues bien, este método nuestro login, tiene que devolver un nombre de vista.
+	// Pues bien, este método nuestro login tiene que devolver un nombre de vista.
 	public String login() {		
 		if (cliEjb.existe(getUsuario(),getContra())) {
 			libros = libEjb.obtenerLibros();
