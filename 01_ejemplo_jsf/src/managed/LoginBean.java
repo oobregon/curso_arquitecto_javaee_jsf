@@ -3,6 +3,7 @@ package managed;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+// Anotaciones
 @ManagedBean (name = "loginBean")
 @RequestScoped
 public class LoginBean {
@@ -22,9 +23,9 @@ public class LoginBean {
 		this.contra = contra;
 	}
 	
-	// Aquí introducimos lo que haríamos en el service de nuestros antiguos servlets.
-	// ¿qué es lo que devolvía nuestro frontcontroler? Un nombre de vista.
-	// Pues bien, este método nuestro login, tiene que devolver un nombre de vista.
+	// AquÃ­ introducimos lo que harÃ­amos en el service de nuestros antiguos servlets.
+	// Â¿quÃ© es lo que devolvÃ­a nuestro frontcontroler? Un nombre de vista.
+	// Pues bien, este mÃ©todo nuestro login, tiene que devolver un nombre de vista.
 	public String login() {
 		if(usuario.equals("curso") && contra.equals("curso")) {
 			return "bienvenida";
