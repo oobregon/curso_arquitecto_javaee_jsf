@@ -17,7 +17,15 @@
 				itemLabel="#{t.tema}" 
 				itemValue="#{t.idTema}" />
 		</h:selectOneMenu><br/><br/>	
-		<h:commandButton action="libros" value="Ver libros" /><br/><br/>
+		<h:commandButton value="Ver libros" /><br/><br/>
+		
+		<h:dataTable border="1" var="lib" value="#{librosBean.libros}">
+			<h:column><f:facet name="header">Isbn</f:facet>${lib.isbn}</h:column>	
+			<h:column><f:facet name="header">Autor</f:facet>${lib.autor}</h:column>
+			<h:column><f:facet name="header">Paginas</f:facet>${lib.paginas}</h:column>
+			<h:column><f:facet name="header">Precio</f:facet>${lib.precio}</h:column>
+			<h:column><f:facet name="header">Título</f:facet>${lib.titulo}</h:column>
+		</h:dataTable>		
 	</center>
 </h:form>	
 </h:body> 

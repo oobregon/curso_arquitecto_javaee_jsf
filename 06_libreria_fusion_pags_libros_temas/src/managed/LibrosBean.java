@@ -7,7 +7,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import daos.DaoLibros;
 import model.Libro;
@@ -35,16 +34,15 @@ public class LibrosBean {
 	
 	public LibrosBean() {}
 
-	// No se puede hacer inyección de dependencias en un constructor.
-	// libros = libEjb.obtenerLibros();
-	// Esta anotación nos garantiza que el método que la sigue se va a ejecutar solamente cuando la instancia (this) esté creada.
-	@PostConstruct
 	private void cargaLibros() {		
 		int idTema = temasBean.getIdTema();
 		libros = idTema==0?libEjb.obtenerLibros():libEjb.obtenerLibrosPorTema(idTema);		
 	}
 
 	public List<Libro> getLibros() {
+		// Ya no podemos cargar los libros en un método postconstruct porque éste se ejecuta en la fase 1.- RESTOREVIEW, es decir, todavía
+		// los mb no tienen disponible el idTema seleccionado. El idTema es
+		this.cargaLibros();
 		return libros;
 	}
 

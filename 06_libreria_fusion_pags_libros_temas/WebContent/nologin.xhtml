@@ -6,7 +6,8 @@
 
 <h:head></h:head> 
 <h:body> 
-<b><h:outputLabel value="#{loginBean.usuario}" /></b><br/><br/>
-	<h:link outcome="temas" value="Ver Temas"/><br/>	
+	El usuario <h:outputText value="#{loginBean.usuario}" />  con contraseña <h:outputText value="#{loginBean.contra}" /> no existe.
+	<br/><br/>
+	<h:link outcome="login" value="Volver" />
 </h:body> 
 </html>
