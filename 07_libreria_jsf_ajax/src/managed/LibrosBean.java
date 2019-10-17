@@ -40,8 +40,6 @@ public class LibrosBean {
 	}
 
 	public List<Libro> getLibros() {
-		// Ya no podemos cargar los libros en un método postconstruct porque éste se ejecuta en la fase 1.- RESTOREVIEW, es decir, todavía
-		// los mb no tienen disponible el idTema seleccionado. El idTema es
 		this.cargaLibros();
 		return libros;
 	}

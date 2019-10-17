@@ -9,14 +9,15 @@
 </h:head> 
 <h:body> 
 <h:form>
-	<center>
-		Usuario logado<b><h:outputLabel value="#{loginBean.usuario}" /></b><br/><br/>
+	<b><h:outputLabel align="right" value="#{loginBean.usuario}" /></b>&nbsp;
+	<b><h:outputLabel align="right" value="#{temasBean.idTema}" /></b><br/><br/>
+	<center>		
 		<h:selectOneMenu value="#{temasBean.idTema}" layout="pageDirection">
 	        <f:selectItem itemValue="0" itemLabel="TODOS"/>
 	        <f:selectItems var="t" value="#{temasBean.temas}"
 				itemLabel="#{t.tema}" 
 				itemValue="#{t.idTema}" />
-			<f:ajax execute="@form" render="tdlibros"/>	
+			<f:ajax execute="@form" render="tdlibros"/>
 		</h:selectOneMenu><br/><br/>			
 		
 		<h:dataTable id="tdlibros" border="1" var="lib" value="#{librosBean.libros}">
@@ -25,7 +26,8 @@
 			<h:column><f:facet name="header">Paginas</f:facet>${lib.paginas}</h:column>
 			<h:column><f:facet name="header">Precio</f:facet>${lib.precio}</h:column>
 			<h:column><f:facet name="header">Título</f:facet>${lib.titulo}</h:column>
-		</h:dataTable>		
+		</h:dataTable>	
+		<h:link outcome="menu" value="Volver" />	
 	</center>
 </h:form>	
 </h:body> 
