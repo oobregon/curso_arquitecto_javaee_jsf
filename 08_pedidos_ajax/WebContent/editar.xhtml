@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+	<center>
+		<h:form>
+			<h:inputHidden value="#{editarPedBean.idPedido}" />
+			Producto: <h:inputText value="#{editarPedBean.pedido.producto}" /> <br/><br/>
+			Precio: <h:inputText value="#{editarPedBean.pedido.precio}" /> <br/><br/>								
+			<h:selectOneMenu value="#{editarPedBean.categoria}" layout="pageDirection">	        
+	        <f:selectItems var="cat" value="#{editarPedBean.categorias}"
+				itemLabel="#{cat}" 
+				itemValue="#{cat}" />
+			</h:selectOneMenu><br/><br/>			
+			<h:commandButton action="#{editarPedBean.guardar()}" value="Guardar" /><br/><br/>			
+		</h:form>
+	</center>
+</h:body> 
+</html>
+

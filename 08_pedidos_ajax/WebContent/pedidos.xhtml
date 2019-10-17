@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+	<h:form id="f" prependId="false">
+		<b><h:outputLabel value="Tabla sin ajax"/></b><br/>
+		<h:dataTable border="1" var="ped" value="#{pedidosBean.pedidos}">
+			<h:column><f:facet name="header">Pedido</f:facet>#{ped.idPedido}</h:column>	
+			<h:column><f:facet name="header">Precio</f:facet>${ped.precio}</h:column>
+			<h:column><f:facet name="header">Categoria</f:facet>${ped.categoria}</h:column>
+			<h:column><f:facet name="header">Acción</f:facet><h:commandLink action="#{pedidosBean.eliminarPedido(ped.idPedido)}" value="Eliminar" /></h:column>		
+		</h:dataTable>
+		<br/><br/><br/><br/><br/>
+		<b><h:outputLabel value="Tabla con ajax"/></b><br/>
+		<h:dataTable id="tdpedsajax" border="1" var="ped" value="#{pedidosBean.pedidos}">
+			<h:column><f:facet name="header">Pedido</f:facet>#{ped.idPedido}</h:column>	
+			<h:column><f:facet name="header">Precio</f:facet>${ped.precio}</h:column>
+			<h:column><f:facet name="header">Categoria</f:facet>${ped.categoria}</h:column>
+			<h:column><f:facet name="header">Acción</f:facet><h:commandLink action="#{pedidosBean.eliminarPedido(ped.idPedido)}"> <f:ajax execute="@form" event="click" render=":f:tdpedsajax"/>Eliminar</h:commandLink></h:column>
+			<h:column><f:facet name="header">Acción</f:facet><h:commandLink action="#{pedidosBean.editarPed(ped.idPedido)}" value="Editar" /></h:column>					
+		</h:dataTable>	
+	</h:form>
+	<h:link outcome="menu" value="Volver" />
+</body> 
+</html>
