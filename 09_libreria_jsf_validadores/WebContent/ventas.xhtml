@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+	<h:form>
+		<h:commandLink action="#{librosBean.cerrarSesion()}" value="Cerrar sesión" align="right" /><br/><br/> 
+	</h:form>
+	<center>		
+	<h:dataTable border="1" var="venta" value="#{ventasBean.ventas}">
+		<h:column><f:facet name="header">Id Venta</f:facet>${venta.idVEnta}</h:column>	
+		<h:column><f:facet name="header">Id Cliente</f:facet>${venta.cliente.idCliente}</h:column>
+		<h:column><f:facet name="header">Id libro</f:facet>${venta.libro.isbn}</h:column>
+		<h:column><f:facet name="header">Fecha</f:facet>${venta.fecha}</h:column>		
+	</h:dataTable>	
+	<h:link outcome="menu" value="Volver" />
+	</center>
+</body> 
+</html>

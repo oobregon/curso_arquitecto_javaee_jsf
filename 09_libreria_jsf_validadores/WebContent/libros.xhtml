@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+
+<h:head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</h:head> 
+<h:body>
+<h:form>
+	<h:commandLink action="#{librosBean.cerrarSesion()}" value="Cerrar sesión" align="right" /><br/><br/> 
+</h:form> 
+	<center>	
+	El usuario <h:outputText value="#{loginBean.usuario}" />  está usted registrado.<br/><br/>	
+	IdTema seleccionado:<b><h:outputLabel value="#{temasBean.idTema}" /></b><br/><br/>
+	<table border="1">
+		<tr>
+			<td>Isbn</td>
+			<td>Autor</td>
+			<td>Paginas</td>
+			<td>Precio</td>
+			<td>Titulo</td>
+		</tr>
+	<c:forEach var="lib" items="#{librosBean.libros}">				
+		<tr>
+			<td>${lib.isbn}</td>		
+			<td>#{lib.autor}</td>
+			<td>${lib.paginas}</td>
+			<td>#{lib.precio}</td>
+			<td>${lib.titulo}</td>
+		</tr>			
+	</c:forEach>
+	</table><br/><br/>
+	<h:dataTable border="1" var="lib" value="#{librosBean.libros}">
+		<h:column><f:facet name="header">Isbn</f:facet>${lib.isbn}</h:column>	
+		<h:column><f:facet name="header">Autor</f:facet>${lib.autor}</h:column>
+		<h:column><f:facet name="header">Paginas</f:facet>${lib.paginas}</h:column>
+		<h:column><f:facet name="header">Precio</f:facet>${lib.precio}</h:column>
+		<h:column><f:facet name="header">Título</f:facet>${lib.titulo}</h:column>
+	</h:dataTable>	
+	<h:link outcome="temas" value="Volver" />
+	</center>
+</h:body> 
+</html>

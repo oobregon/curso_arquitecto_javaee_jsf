@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script type="text/javascript">
+	function cambiarColor() {
+		var objTabLib = document.getElementById("tdlibros");
+		var objLista = document.getElementById("lista");
+		objTabLib.style.backgroundColor="yellow";
+		objLista.style.backgroundColor="blue";
+	}
+
+</script>
+</h:head> 
+<h:body> 
+<h:form>
+	<h:commandLink action="#{librosBean.cerrarSesion()}" value="Cerrar sesión" align="right" /><br/><br/> 
+</h:form>
+<h:form prependId="false">
+	<b><h:outputLabel align="right" value="#{loginBean.usuario}" /></b>&nbsp;
+	<b><h:outputLabel align="right" value="#{temasBean.idTema}" /></b><br/><br/>
+	<center>		
+		<h:selectOneMenu id="lista" value="#{temasBean.idTema}" layout="pageDirection">
+	        <f:selectItem itemValue="0" itemLabel="TODOS"/>
+	        <f:selectItems var="t" value="#{temasBean.temas}"
+				itemLabel="#{t.tema}" 
+				itemValue="#{t.idTema}" />
+			<f:ajax execute="@form" render="tdlibros"/>
+		</h:selectOneMenu><br/><br/>						
+	</center>
+</h:form>
+<center>	
+	<h:dataTable id="tdlibros" border="1" var="lib" value="#{librosBean.libros}" onmouseover="cambiarColor();">
+			<h:column><f:facet name="header">Isbn</f:facet>${lib.isbn}</h:column>	
+			<h:column><f:facet name="header">Autor</f:facet>${lib.autor}</h:column>
+			<h:column><f:facet name="header">Paginas</f:facet>${lib.paginas}</h:column>
+			<h:column><f:facet name="header">Precio</f:facet>${lib.precio}</h:column>
+			<h:column><f:facet name="header">Título</f:facet>${lib.titulo}</h:column>
+		</h:dataTable>	
+		<h:link outcome="menu" value="Volver" />
+</center>		
+</h:body> 
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+	<center>
+		<h:form>		
+			Id Pedido <h:inputText id="idped" value="#{editarPedBean.pedidoEditado.idPedido}" required="true" /><h:message for="idped"/> <br/><br/>
+			
+			Producto: <h:inputText id="idprod" value="#{editarPedBean.pedidoEditado.producto}" > 
+						<f:validator validatorId="vCat"/>
+					  </h:inputText> <h:message for="idprod"/> <br/><br/>
+					  
+			Precio: <h:inputText id="idprecio" value="#{editarPedBean.pedidoEditado.precio}" required="true" >
+						<f:validateDoubleRange minimum="1" maximum="1000" />						
+					</h:inputText> <br/><br/> <h:message for="idprecio"/>
+													
+			Introduce Categoría: 
+			<h:selectOneMenu value="#{editarPedBean.pedidoEditado.categoria}" layout="pageDirection">	        
+	        <f:selectItems var="cat" value="#{editarPedBean.categorias}"
+				itemLabel="#{cat}" 
+				itemValue="#{cat}" />
+			</h:selectOneMenu><br/><br/>			
+			<h:commandButton action="#{editarPedBean.guardar()}" value="Guardar" /><br/><br/>			
+		</h:form>
+	</center>
+</h:body> 
+</html>
+

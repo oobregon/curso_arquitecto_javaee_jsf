@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<style type="text/css">
+	span.alert {
+		display: block;
+	}
+</style>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+</h:head> 
+<h:body> 
+	<div class="container">
+		<h:form prependId="false">
+		<div class="form-group">
+			<label class="control-label" for="prod">Nombre usuario: </label>
+			<h:inputText value="#{registroBean.cliente.usuario}" /> <br/><br/>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="prod">Contraseña: </label>
+			<h:inputSecret id="contrase" value="#{registroBean.cliente.password}" /> <br/><br/>
+		</div>
+		<div class="form-group">			
+			<label class="control-label" for="prod">Repetir contraseña: </label>						
+			<h:inputSecret id="idcontrarep" value="#{registroBean.repContra}" > 
+				<f:validator validatorId="vContra"/>
+			</h:inputSecret> <h:message for="idcontrarep"/> <br/><br/><br/><br/>
+		</div>
+		<div class="form-group">			
+			<label class="control-label" for="prod">Correo electrónico: </label> 
+			<h:inputText value="#{registroBean.cliente.email}" /> <br/><br/>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="prod">Teléfono: </label> 
+			<h:inputText value="#{registroBean.cliente.telefono}" /> <br/><br/>
+		</div>
+		<div class="form-group">						
+			<h:commandButton action="#{registroBean.confirmar()}" value="Registrar" /><br/><br/>
+		</div>			
+		</h:form>
+	</div>	
+</h:body> 
+</html>
