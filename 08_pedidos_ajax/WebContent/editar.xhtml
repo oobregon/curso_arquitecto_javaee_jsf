@@ -7,11 +7,11 @@
 <h:head></h:head> 
 <h:body> 
 	<center>
-		<h:form>
-			<h:inputHidden value="#{editarPedBean.idPedido}" />
-			Producto: <h:inputText value="#{editarPedBean.pedido.producto}" /> <br/><br/>
-			Precio: <h:inputText value="#{editarPedBean.pedido.precio}" /> <br/><br/>								
-			<h:selectOneMenu value="#{editarPedBean.categoria}" layout="pageDirection">	        
+		<h:form>		
+			Id Pedido <h:inputText value="#{editarPedBean.pedidoEditado.idPedido}" /> <br/><br/>
+			Producto: <h:inputText value="#{editarPedBean.pedidoEditado.producto}" /> <br/><br/>
+			Precio: <h:inputText value="#{editarPedBean.pedidoEditado.precio}" /> <br/><br/>								
+			<h:selectOneMenu value="#{editarPedBean.pedidoEditado.categoria}" layout="pageDirection">	        
 	        <f:selectItems var="cat" value="#{editarPedBean.categorias}"
 				itemLabel="#{cat}" 
 				itemValue="#{cat}" />

@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 import daos.DaoPedidos;
 import model.Pedido;
@@ -16,10 +16,25 @@ import model.Pedido;
 @RequestScoped
 public class PedidosBean {
 	private List<Pedido> pedidos;
-	private int idPedido;
+	private Pedido pedidoEditar;
 	
 	@EJB
 	DaoPedidos pedEjb;
+	
+	@PostConstruct
+	private void cargarPedidos() {
+		this.setPedidos(pedEjb.damePedidos());		
+	}
+	
+	public void eliminarPedido(int idPedido) {
+		pedEjb.eliminarPedido(idPedido);
+		setPedidos(pedEjb.damePedidos());		
+	}
+	
+	public String editarPed(int idPedido) {
+		setPedidoEditar(pedEjb.damePedido(idPedido));		
+		return "editar";
+	}
 	
 	public List<Pedido> getPedidos() {
 		return this.pedidos;	
@@ -28,27 +43,12 @@ public class PedidosBean {
 	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
-	
-	public int getIdPedido() {
-		return idPedido;
+
+	public Pedido getPedidoEditar() {
+		return pedidoEditar;
 	}
 
-	public void setIdPedido(int idPedido) {
-		this.idPedido = idPedido;
-	}
-
-	@PostConstruct
-	private void cargarPedidos() {
-		this.setPedidos(pedEjb.damePedidos());		
-	}
-	
-	public void eliminarPedido(int idPedido) {
-		pedEjb.eliminarPedido(idPedido);	
-		pedidos = pedEjb.damePedidos();
-	}
-	
-	public String editarPed(int idPedido) {
-		setIdPedido(idPedido);
-		return "editar";
+	public void setPedidoEditar(Pedido pedidoEditar) {
+		this.pedidoEditar = pedidoEditar;
 	}
 }
