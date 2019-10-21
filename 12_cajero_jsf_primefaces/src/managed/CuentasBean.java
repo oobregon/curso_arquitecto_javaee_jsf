@@ -28,8 +28,7 @@ public class CuentasBean {
 	
 	@PostConstruct
 	private void inicio() {
-		setCuentas(ejbCuentas.obtenerCuentas());
-		setMovimientos(ejbMovs.movimientosCuenta(getIdCuenta()));
+		setCuentas(ejbCuentas.obtenerCuentas());		
 	}
 	
 	public List<Cuenta> getCuentas() {
@@ -39,7 +38,7 @@ public class CuentasBean {
 		this.cuentas = cuentas;
 	}
 	public List<Movimiento> getMovimientos() {
-		return movimientos;
+		return ejbMovs.movimientosCuenta(getIdCuenta());
 	}
 	public void setMovimientos(List<Movimiento> movimientos) {
 		this.movimientos = movimientos;
