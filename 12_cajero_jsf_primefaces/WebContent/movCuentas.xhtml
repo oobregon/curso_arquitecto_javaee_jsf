@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+	<center>	
+		<h:form prependId="false">
+			<p:selectOneMenu id="idcuentas" value="#{cuentasBean.idCuenta}">
+			    <f:selectItem itemValue="0" itemLabel="- Elije una -"/>
+				<f:selectItems var="cuenta" value="#{cuentasBean.cuentas}"
+					itemLabel="#{cuenta.numeroCuenta}" 
+					itemValue="#{cuenta.numeroCuenta}" />
+				<f:ajax execute="@form" render="tdmovimientos"/>
+			</p:selectOneMenu>
+		</h:form>
+	</center>
+	<center>	
+	<h:dataTable id="tdmovimientos" border="1" var="mov" value="#{cuentasBean.movimientos}">
+			<h:column><f:facet name="header">Número de cuenta</f:facet>${mov.cuenta.numeroCuenta}</h:column>	
+			<h:column><f:facet name="header">Fecha</f:facet>${mov.fecha}</h:column>
+			<h:column><f:facet name="header">Cantidad</f:facet>${mov.cantidad}</h:column>
+			<h:column><f:facet name="header">Tipo de Movimiento</f:facet>${mov.operacion}</h:column>			
+	</h:dataTable>		
+</center>
+</body> 
+</html>

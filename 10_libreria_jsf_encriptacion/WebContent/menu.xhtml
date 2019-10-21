@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body>
+<h:form>
+	<h:commandLink action="#{librosBean.cerrarSesion()}" value="Cerrar sesión" align="right" /><br/><br/>
+</h:form> 
+<b><h:outputLabel value="#{loginBean.usuario}" /></b><br/><br/>
+IdCliente logado <b><h:outputLabel value="#{loginBean.cliLogado.idCliente}" /></b><br/><br/>
+	<h:link outcome="temas" value="Ver Temas"/><br/>	
+	<h:link outcome="ventas" value="Ver mis compras"/><br/>
+	<h:link outcome="gestionClientes" value="Gesion de Clientes"/><br/>
+</h:body> 
+</html>

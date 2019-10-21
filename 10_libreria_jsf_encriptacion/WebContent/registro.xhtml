@@ -27,12 +27,15 @@
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="contrase">Contraseña: </label>
-			<h:inputSecret id="contrase" value="#{registroBean.cliente.password}" required="true" /><h:message for="contrase" />
+			<h:inputSecret id="contrase" value="#{registroBean.cliente.password}" required="true">
+				<f:converter converterId="encripContra"/>
+			</h:inputSecret><h:message for="contrase" />
 		</div>
 		<div class="form-group">			
 			<label class="control-label" for="contrarep">Repetir contraseña: </label>						
 			<h:inputSecret id="contrarep" value="#{registroBean.repContra}" required="true"> 
 				<f:validator validatorId="vContra"/>
+				<f:converter converterId="encripContra"/>
 			</h:inputSecret> <h:message for="contrarep"/>
 		</div>
 		<div class="form-group">			
