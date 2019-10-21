@@ -27,7 +27,6 @@ public class EditarPedBean {
 	@PostConstruct
 	private void inicio() throws InterruptedException {		
 		setCategorias(pedEjb.dameCategorias());
-		Thread.sleep(5000);
 		setPedidoEditado(getPedidosBean().getPedidoEditar());
 	}
 	

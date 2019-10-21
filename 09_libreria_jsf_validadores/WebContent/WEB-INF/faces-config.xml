@@ -11,8 +11,11 @@
 		</locale-config>
 		<resource-bundle>
 			<base-name>mismensajes</base-name>
-			<var>valIgualContras</var>
-	</resource-bundle>
+			<var>valIgualContras</var>			
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>mismensajes</base-name>
+			<var>validadorCorrElec</var>
+		</resource-bundle>	
 	</application>
-
 </faces-config>

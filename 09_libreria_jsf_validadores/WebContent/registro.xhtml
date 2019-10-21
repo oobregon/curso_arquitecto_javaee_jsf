@@ -22,30 +22,32 @@
 	<div class="container">
 		<h:form prependId="false">
 		<div class="form-group">
-			<label class="control-label" for="prod">Nombre usuario: </label>
-			<h:inputText value="#{registroBean.cliente.usuario}" /> <br/><br/>
+			<label class="control-label" for="usuario">Nombre usuario: </label>
+			<h:inputText id="usuario" value="#{registroBean.cliente.usuario}" />
 		</div>
 		<div class="form-group">
-			<label class="control-label" for="prod">Contraseña: </label>
-			<h:inputSecret id="contrase" value="#{registroBean.cliente.password}" /> <br/><br/>
+			<label class="control-label" for="contrase">Contraseña: </label>
+			<h:inputSecret id="contrase" value="#{registroBean.cliente.password}" required="true" /><h:message for="contrase" />
 		</div>
 		<div class="form-group">			
-			<label class="control-label" for="prod">Repetir contraseña: </label>						
-			<h:inputSecret id="idcontrarep" value="#{registroBean.repContra}" > 
+			<label class="control-label" for="contrarep">Repetir contraseña: </label>						
+			<h:inputSecret id="contrarep" value="#{registroBean.repContra}" required="true"> 
 				<f:validator validatorId="vContra"/>
-			</h:inputSecret> <h:message for="idcontrarep"/> <br/><br/><br/><br/>
+			</h:inputSecret> <h:message for="contrarep"/>
 		</div>
 		<div class="form-group">			
-			<label class="control-label" for="prod">Correo electrónico: </label> 
-			<h:inputText value="#{registroBean.cliente.email}" /> <br/><br/>
+			<label class="control-label" for="correoelec">Correo electrónico: </label> 
+			<h:inputText id="correoelec" value="#{registroBean.cliente.email}" required="true" >
+				<f:validator validatorId="valdCorrElec"/> 
+			</h:inputText> <h:message for="correoelec"/>
 		</div>
 		<div class="form-group">
-			<label class="control-label" for="prod">Teléfono: </label> 
-			<h:inputText value="#{registroBean.cliente.telefono}" /> <br/><br/>
-		</div>
-		<div class="form-group">						
-			<h:commandButton action="#{registroBean.confirmar()}" value="Registrar" /><br/><br/>
-		</div>			
+			<label class="control-label" for="telefono">Teléfono: </label> 
+			<h:inputText id="telefono" value="#{registroBean.cliente.telefono}">
+				<f:validateLongRange maximum="999999999" minimum="000000001"/>
+			</h:inputText><h:message for="telefono"/>
+		</div>						
+		<h:commandButton action="#{registroBean.confirmar()}" value="Registrar" />			
 		</h:form>
 	</div>	
 </h:body> 

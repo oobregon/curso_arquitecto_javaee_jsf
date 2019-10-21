@@ -10,8 +10,7 @@
 		<h:form>		
 			Id Pedido <h:inputText id="idped" value="#{editarPedBean.pedidoEditado.idPedido}" required="true" /><h:message for="idped"/> <br/><br/>
 			
-			Producto: <h:inputText id="idprod" value="#{editarPedBean.pedidoEditado.producto}" > 
-						<f:validator validatorId="vCat"/>
+			Producto: <h:inputText id="idprod" value="#{editarPedBean.pedidoEditado.producto}" > 						
 					  </h:inputText> <h:message for="idprod"/> <br/><br/>
 					  
 			Precio: <h:inputText id="idprecio" value="#{editarPedBean.pedidoEditado.precio}" required="true" >
@@ -19,13 +18,14 @@
 					</h:inputText> <br/><br/> <h:message for="idprecio"/>
 													
 			Introduce Categoría: 
-			<h:selectOneMenu value="#{editarPedBean.pedidoEditado.categoria}" layout="pageDirection">	        
+			<h:selectOneMenu id="idcat" value="#{editarPedBean.pedidoEditado.categoria}" layout="pageDirection">	        
 	        <f:selectItems var="cat" value="#{editarPedBean.categorias}"
 				itemLabel="#{cat}" 
-				itemValue="#{cat}" />
-			</h:selectOneMenu><br/><br/>			
+				itemValue="#{cat}" /> <f:validator validatorId="vCat"/>
+			</h:selectOneMenu><br/><br/> <h:message for="idcat"/> <br/>			
 			<h:commandButton action="#{editarPedBean.guardar()}" value="Guardar" /><br/><br/>			
 		</h:form>
+		<h:link outcome="pedidos" value="Volver" />
 	</center>
 </h:body> 
 </html>

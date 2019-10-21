@@ -6,8 +6,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import model.Cliente;
+import model.Libro;
 
 /**
  * Session Bean implementation class DaoClientesImpl
@@ -49,5 +51,16 @@ public class DaoClientesImpl implements DaoClientes {
 	@Override
 	public void actualizar(Cliente c) {
 		em.merge(c);		
+	}
+
+	@Override
+	public void eliminar(int idCliente) {
+		em.remove(this.obtenerClientePorId(idCliente));		
+	}
+
+	@Override
+	public List<Cliente> obtenerClientes() {
+		TypedQuery<Cliente> q = em.createNamedQuery("Cliente.findAll",Cliente.class);
+		return q.getResultList();		
 	}
 }

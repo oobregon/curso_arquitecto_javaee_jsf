@@ -5,10 +5,14 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 
 <h:head></h:head> 
-<h:body> 
+<h:body>
+<h:form>
+	<h:commandLink action="#{librosBean.cerrarSesion()}" value="Cerrar sesión" align="right" /><br/><br/>
+</h:form> 
 <b><h:outputLabel value="#{loginBean.usuario}" /></b><br/><br/>
 IdCliente logado <b><h:outputLabel value="#{loginBean.cliLogado.idCliente}" /></b><br/><br/>
 	<h:link outcome="temas" value="Ver Temas"/><br/>	
 	<h:link outcome="ventas" value="Ver mis compras"/><br/>
+	<h:link outcome="gestionClientes" value="Gesion de Clientes"/><br/>
 </h:body> 
 </html>

@@ -5,8 +5,14 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 
 <h:head></h:head> 
-<h:body> 
-	<h:link outcome="alta" value="Nuevo pedido"/><br/>	
-	<h:link outcome="pedidos" value="Ver pedidos"/><br/>
-</h:body> 
+<body> 
+	<h:form>
+		<h:selectManyCheckbox id="casVerifCli" layout="pageDirection">
+			<f:selectItems var="cliente" value="#{gestCliBean.clientes}"
+				itemLabel="#{cliente.usuario}" 
+				itemValue="#{cliente.idCliente}" />
+		</h:selectManyCheckbox>
+	</h:form>
+	<h:link outcome="menu" value="Volver" />
+</body> 
 </html>

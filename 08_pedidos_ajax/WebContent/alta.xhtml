@@ -5,8 +5,12 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 
 <h:head></h:head> 
-<h:body> 
-	<h:link outcome="alta" value="Nuevo pedido"/><br/>	
-	<h:link outcome="pedidos" value="Ver pedidos"/><br/>
-</h:body> 
+<body> 
+	<h:form>
+		Producto <h:inputText value="#{altaBean.pedido.producto}" /> <br/>
+		Precio <h:inputText value="#{altaBean.pedido.precio}" /> <br/>
+		Categoria <h:inputText value="#{altaBean.pedido.categoria}" /> <br/>
+		<h:commandButton action="#{altaBean.confirmar()}" value="Alta" />
+	</h:form>
+</body> 
 </html>
