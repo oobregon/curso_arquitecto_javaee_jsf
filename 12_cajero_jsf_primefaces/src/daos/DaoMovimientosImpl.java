@@ -58,7 +58,7 @@ public class DaoMovimientosImpl implements DaoMovimientos {
 	@Override
 	public List<Movimiento> movimientosCuenta(int numCuenta, IntervaloFechas intervalo) {
 		TypedQuery<Movimiento> q = em.createNamedQuery("Movimiento.intervalo",Movimiento.class);
-		q.setParameter(1, numCuenta);
+		q.setParameter(1,numCuenta);
 		q.setParameter(2,intervalo.getFechaInferior());
 		q.setParameter(3,intervalo.getFechaSuperior());
 		return q.getResultList();		
