@@ -18,7 +18,9 @@ import model.Movimiento;
  */
 @Stateless
 public class ServicioCajeroImpl implements ServicioCajero {
-	// La capa de servicio no (no jdbc, no jpa)
+	// La capa de servicio no debe contener ninguna sentencia de acceso a datos, ninguna sentencia
+	// de persistencia (no jdbc, no jpa, no ds). La capa que conoce acceso a datos es la capa Dao.
+	// Inyectar interfaces EJB de negocio no son sentencias de acceso a datos. 
 	
 	@EJB
 	DaoClientes ejbCli;
@@ -35,7 +37,7 @@ public class ServicioCajeroImpl implements ServicioCajero {
 	}
 
 	@Override
-	public void extraccion(int numCuenta, double cantidad) {
+	public void extraer(int numCuenta, double cantidad) {
 		Cuenta cuenta = ejbCuentas.findCuenta(numCuenta);
 		if(cuenta.getSaldo() >= cantidad) {
 			cuenta.setSaldo(cuenta.getSaldo()-cantidad);
@@ -46,33 +48,32 @@ public class ServicioCajeroImpl implements ServicioCajero {
 	}
 
 	@Override
-	public void ingreso(int numCuenta, double cantidad) {
-		// TODO Auto-generated method stub
-		
+	public void ingresar(int numCuenta, double cantidad) {
+		Cuenta cuenta = ejbCuentas.findCuenta(numCuenta);
+		cuenta.setSaldo(cuenta.getSaldo()+cantidad);
+		ejbCuentas.updateCuenta(cuenta);
+		Movimiento movimiento = new Movimiento(0,cantidad,new Date(),"Ingreso",cuenta);
+		ejbMov.saveMovimiento(movimiento);
 	}
 
 	@Override
-	public void transferencia(int numCuentaOrigen, int numCuentaDestino, double cantidad) {
-		// TODO Auto-generated method stub
-		
+	public void transferir(int numCuentaOrigen, int numCuentaDestino, double cantidad) {
+		this.extraer(numCuentaOrigen,cantidad);
+		this.ingresar(numCuentaDestino,cantidad);
 	}
 
 	@Override
 	public List<Cliente> obtenerTitulares(int idCuenta) {
-		// TODO Auto-generated method stub
-		return null;
+		return ejbCli.findClienteByCuenta(idCuenta);
 	}
 
 	@Override
 	public List<Movimiento> obtenerMovimientos(int numCuenta) {
-		// TODO Auto-generated method stub
-		return null;
+		return ejbMov.findMovimientoByCuenta(numCuenta);
 	}
 
 	@Override
 	public double obtenerSaldo(int numCuenta) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ejbCuentas.findCuenta(numCuenta).getSaldo();
 	}
-
 }

@@ -11,9 +11,9 @@ import model.Movimiento;
 @Local
 public interface ServicioCajero {
 	Cuenta obtenerCuenta(int numCuenta);
-	void extraccion(int numCuenta,double cantidad);
-	void ingreso(int numCuenta,double cantidad);
-	void transferencia(int numCuentaOrigen,int numCuentaDestino,double cantidad);
+	void extraer(int numCuenta,double cantidad);
+	void ingresar(int numCuenta,double cantidad);
+	void transferir(int numCuentaOrigen,int numCuentaDestino,double cantidad);
 	List<Cliente> obtenerTitulares(int idCuenta);
 	List<Movimiento> obtenerMovimientos(int numCuenta);
 	double obtenerSaldo(int numCuenta);
