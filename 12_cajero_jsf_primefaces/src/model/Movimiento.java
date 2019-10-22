@@ -12,6 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="movimientos")
 @NamedQuery(name="Movimiento.findAll", query="SELECT m FROM Movimiento m")
+@NamedQuery(name="Movimiento.intervalo", query="SELECT m FROM Movimiento m join m.cuenta c where c.numeroCuenta = ?1 AND m.fecha between ?2 and ?3")
 public class Movimiento implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -6,7 +6,9 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
+import managed.IntervaloFechas;
 import model.Cliente;
 import model.Cuenta;
 import model.Movimiento;
@@ -51,5 +53,14 @@ public class DaoMovimientosImpl implements DaoMovimientos {
 			}
 		}
 		return movimientos;
+	}
+
+	@Override
+	public List<Movimiento> movimientosCuenta(int numCuenta, IntervaloFechas intervalo) {
+		TypedQuery<Movimiento> q = em.createNamedQuery("Movimiento.intervalo",Movimiento.class);
+		q.setParameter(1, numCuenta);
+		q.setParameter(2,intervalo.getFechaInferior());
+		q.setParameter(3,intervalo.getFechaSuperior());
+		return q.getResultList();		
 	}
 }
