@@ -44,7 +44,9 @@ public class ServicioCajeroImpl implements ServicioCajero {
 			ejbCuentas.updateCuenta(cuenta);
 			Movimiento mov = new Movimiento(0,cantidad,new Date(),"Extracción",cuenta);
 			ejbMov.saveMovimiento(mov);
-		}		
+		} else {
+			throw new RuntimeException();
+		}
 	}
 
 	@Override
