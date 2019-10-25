@@ -22,9 +22,9 @@ public class ServicioCajeroImpl implements ServicioCajero {
 	// de persistencia (no jdbc, no jpa, no ds). La capa que conoce acceso a datos es la capa Dao.
 	// Inyectar interfaces EJB de negocio no son sentencias de acceso a datos. 
 	//
-	// En esta capa no debe existir ningún vínculo con la tecnología de acceso a datos, de tal forma, 
-	// que si cambia la tecnología de acceso a datos (jpa, hibernate, jdb, ..) esta capa de servicio
-	// no debería verse alterada de modo alguno
+	// En esta capa no debe existir ningÃºn vÃ­nculo con la tecnologÃ­a de acceso a datos, de tal forma, 
+	// que si cambia la tecnologÃ­a de acceso a datos (jpa, hibernate, jdb, ..) esta capa de servicio
+	// no deberÃ­a verse alterada de modo alguno.
 	
 	@EJB
 	DaoClientes ejbCli;
@@ -46,7 +46,7 @@ public class ServicioCajeroImpl implements ServicioCajero {
 		if(cuenta.getSaldo() >= cantidad) {
 			cuenta.setSaldo(cuenta.getSaldo()-cantidad);
 			ejbCuentas.updateCuenta(cuenta);
-			Movimiento mov = new Movimiento(0,cantidad,new Date(),"Extracción",cuenta);
+			Movimiento mov = new Movimiento(0,cantidad,new Date(),"ExtracciÃ³n",cuenta);
 			ejbMov.saveMovimiento(mov);
 		} else {
 			throw new RuntimeException();
