@@ -21,7 +21,7 @@ public class ServicioCajeroImpl implements ServicioCajero {
 	// La capa de servicio no debe contener ninguna sentencia de acceso a datos, ninguna sentencia
 	// de persistencia (no jdbc, no jpa, no ds). La capa que conoce acceso a datos es la capa Dao.
 	// Inyectar interfaces EJB de negocio no son sentencias de acceso a datos. 
-	
+	//
 	// Viendo esta capa de servicio no debemos ver ningún vínculo a tecnologías de acceso a 
 	// datos. La inyección de EJB,s es independiente de la tecnología de acceso a datos (jpa,
 	// jdbc,etc); si se cambia la tecnología de acceso a datos, esta capa de servicio no se ve
