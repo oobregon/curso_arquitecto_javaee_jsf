@@ -17,9 +17,10 @@ import model.Movimiento;
  * Session Bean implementation class ServiceCajeroImpl
  */
 @Stateless
-public class ServiceCajeroImpl implements ServiceCajero {	
+public class ServiceCajeroImpl implements ServiceCajero {
+
 	@EJB (beanName = "DaoClientesImplHbt")
-	DaoClientes daoClientes;
+	DaoClientes daoClientes;	
 	
 	@EJB (beanName = "DaoCuentasImplHbt")
 	DaoCuentas daoCuentas;

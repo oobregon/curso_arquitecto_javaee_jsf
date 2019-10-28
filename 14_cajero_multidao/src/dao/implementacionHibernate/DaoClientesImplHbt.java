@@ -18,7 +18,7 @@ import model.Cuenta;
  */
 @Stateless
 @LocalBean
-public class DaoClientesImplHbt implements DaoClientes{	
+public class DaoClientesImplHbt implements DaoClientes {	
 	@Override
 	public List<Cliente> findClienteByCuenta(int idCuenta) {
 		try(Session sesion=HibernateUtil.getSessionFactory().openSession();){
