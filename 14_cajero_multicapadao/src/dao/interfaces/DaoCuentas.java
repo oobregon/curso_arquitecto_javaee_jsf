@@ -1,8 +1,10 @@
-package model;
+package dao.interfaces;
 
 import java.util.List;
 
 import javax.ejb.Local;
+
+import model.Cuenta;
 
 @Local
 public interface DaoCuentas {

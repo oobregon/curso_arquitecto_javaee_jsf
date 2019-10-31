@@ -7,8 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import dao.interfaces.DaoCuentas;
 import model.Cuenta;
-import model.DaoCuentas;
 
 /**
  * Session Bean implementation class DaoCuentasImpl

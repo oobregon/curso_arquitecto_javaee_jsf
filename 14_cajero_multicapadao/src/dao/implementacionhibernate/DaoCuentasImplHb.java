@@ -7,9 +7,9 @@ import javax.ejb.Stateless;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import dao.interfaces.DaoCuentas;
 import dao.utilidades.HibernateUtil;
 import model.Cuenta;
-import model.DaoCuentas;
 
 /**
  * Session Bean implementation class DaoCuentasImplHb

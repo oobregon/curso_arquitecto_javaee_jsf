@@ -7,10 +7,10 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import dao.interfaces.DaoClientes;
+import dao.interfaces.DaoCuentas;
 import dao.interfaces.DaoMovimientos;
 import model.Cliente;
 import model.Cuenta;
-import model.DaoCuentas;
 import model.Movimiento;
 
 /**
