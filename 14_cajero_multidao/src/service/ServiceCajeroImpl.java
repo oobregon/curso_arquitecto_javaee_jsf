@@ -19,13 +19,13 @@ import model.Movimiento;
 @Stateless
 public class ServiceCajeroImpl implements ServiceCajero {
 
-	@EJB (beanName = "DaoClientesImpl")
+	@EJB (beanName = "DaoClientesImplHbt")
 	DaoClientes daoClientes;	
 	
-	@EJB (beanName = "DaoCuentasImpl")
+	@EJB (beanName = "DaoCuentasImplHbt")
 	DaoCuentas daoCuentas;
 	
-	@EJB (beanName = "DaoMovimientosImpl")
+	@EJB (beanName = "DaoMovimientosImplHbt")
 	DaoMovimientos daoMovimientos;
 	
 	@Override
